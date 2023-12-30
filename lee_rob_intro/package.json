@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev --turbo"
   },
   "dependencies": {
     "next": "^14.0.4",
