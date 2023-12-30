@@ -1,5 +1,6 @@
-import Footer from "./footer";
-import {Waist} from "./waist";
+import Footer from "./footer";   //export default function
+import {Waist} from "./waist";   //export function
+import {Tweet} from "react-tweet";
 function Header({ name }){
     // let name = "Nick";
     return (
@@ -17,6 +18,7 @@ function Stomach({children}){
 
 export default function Page(){
     return(
+        <>
         <section>
             <Header name="Nick"/>
             <p>This is my amazing site!</p>
@@ -27,5 +29,9 @@ export default function Page(){
             <Waist desc="what more can I say!"/>
             <Footer> <p>lets play a game...   Psych!</p></Footer>
         </section>
+        <section>
+            <Tweet id=""/>
+        </section>
+        </>
     );
 }
