@@ -27,7 +27,7 @@ async function Data(){
     <>
     <h1>help!</h1>
     <hr/>
-    <p>{results.title}</p>
+    <p className="underline">{results.title}</p>
     <p>{results.plot}</p>
     <p>{results.cast.join(" ")}</p>
     <hr/>
@@ -35,7 +35,7 @@ async function Data(){
       {[results_2].map(
         (res,idx) => (
           <div key={idx}>
-          <h1>{res.title}</h1>
+          <h1 className="underline">{res.title}</h1>
           <h1>{res.plot}</h1>
           </div>
         )
