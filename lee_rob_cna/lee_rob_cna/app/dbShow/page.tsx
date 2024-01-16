@@ -1,3 +1,4 @@
+// "use client";
 import {Suspense} from 'react';
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://404hero:mongo12345@helloworld.wtjmfwx.mongodb.net/?retryWrites=true&w=majority";
@@ -12,6 +13,7 @@ const client = new MongoClient(uri, {
 // type Movies = {
 //   title: string;
 //   plot: string;
+//   year: number;
 // };
 async function Data(){
   // await client.connet();
@@ -20,7 +22,12 @@ async function Data(){
   const query = {title: 'Back to the Future'};
   const results = await col.findOne(query);
   const results_2 = await col.findOne({title: "The Great Train Robbery"});
-  // console.log(results);
+  // const list = await col.find({year: {$gt: 1985}}).limit(3);
+  const list_2 = await col.aggregate([{"$match": {"year": {"$gt": 1985}}},{"$limit": 5}]);
+  // console.log(await list.toArray());
+  // for await (const document of list) {
+  //   console.log(document);
+  // }
   // console.dir;
   return(
     // results
@@ -46,8 +53,20 @@ async function Data(){
       <p>Query Results:</p>
       <p>{JSON.stringify(results)}</p>
     </section>
+    {/* <section>
+      <p>Query Results:</p>
+      <p>{JSON.stringify(list_3)}</p>
+    </section> */}
     <section>
-
+      <p>{JSON.stringify(list_2)}</p>
+          {/* {[list].map(
+            (x, idx) => (
+            <div key={idx}>
+              <h1>{x.title}</h1>
+              <h2>{x.plot}</h2>
+              <h2>{x.year}</h2>
+            </div>
+          ))} */}
     </section>
     </>
   );
